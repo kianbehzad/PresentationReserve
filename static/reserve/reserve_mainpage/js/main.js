@@ -20,6 +20,7 @@
     /*==================================================================
     [ Validate ]*/
     var name = $('.validate-input input[name="name"]');
+    var stdnum = $('.validate-input input[name="stdnum"]');
     var email = $('.validate-input input[name="email"]');
     var message = $('.validate-input textarea[name="message"]');
 
