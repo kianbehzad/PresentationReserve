@@ -7,4 +7,4 @@ class Datetime(models.Model):
     num_stars = models.IntegerField()
 
     def __str__(self):
-        return self.date + '  ' + self.num_stars + 'X*'
+        return self.date + '  ' + str(self.num_stars) + '+'
