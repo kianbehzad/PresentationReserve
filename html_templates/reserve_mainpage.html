@@ -58,11 +58,9 @@
 					<span class="label-input100">Date of Presenting</span>
 					<div>
 						<select class="selection-2" name="service" >
-							<option value="a">1/1/1</option>
-							<option>2/2/2</option>
-							<option>3/3/3</option>
-							<option>4/4/4</option>
-							<option>5/5/5</option>
+							{% for datetime in all_Datetime %}
+							<option value="{{datetime.id}}">{{datetime.year}}/{{datetime.month}}/{{datetime.day}} with {{datetime.number_of_stars}} plus</option>
+							{% endfor %}
 						</select>
 					</div>
 					<span class="focus-input100"></span>
