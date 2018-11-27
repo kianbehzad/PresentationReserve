@@ -3,8 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Datetime(models.Model):
-    date = models.CharField(max_length=15)
-    num_stars = models.IntegerField()
+    year = models.IntegerField()
+    month = models.IntegerField()
+    day = models.IntegerField()
+    number_of_stars = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.date + '  ' + str(self.num_stars) + '+'
+        return str(self.year) + '/' + str(self.month) + '/' + str(self.day) + '   :  ' + str(self.number_of_stars) + '+'
