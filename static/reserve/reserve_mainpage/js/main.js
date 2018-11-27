@@ -20,7 +20,6 @@
     /*==================================================================
     [ Validate ]*/
     var name = $('.validate-input input[name="name"]');
-    var stdnum = $('.validate-input input[name="stdnum"]');
     var email = $('.validate-input input[name="email"]');
     var message = $('.validate-input textarea[name="message"]');
 
@@ -28,7 +27,7 @@
     $('.validate-form').on('submit',function(){
         var check = true;
 
-        if($(name).val().trim() == ''){
+        if($(name).val().trim() == '') {
             showValidate(name);
             check=false;
         }
