@@ -33,42 +33,12 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Reserve Form
+					Verification Form
 				</span>
 
-				<div class="wrap-input100 validate-input" data-validate="Student number is required">
-					<span class="label-input100">Your student number</span>
-					<input class="input100" type="number" name="name" placeholder="Enter your student number">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate="name is optional">
-					<span class="label-input100">Your name(optional)</span>
-					<input class="input100" type="text" name="name1" placeholder="Enter your name">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@aut.ac.ir">
-					<span class="label-input100">AUT Email</span>
-					<input class="input100" type="text" name="email" placeholder="Enter your aut email addess">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Date of Presenting</span>
-					<div>
-						<select class="selection-2" name="service" >
-							{% for datetime in all_Datetime %}
-							<option value="{{datetime.id}}">{{datetime.year}}/{{datetime.month}}/{{datetime.day}} with {{datetime.number_of_stars}} plus</option>
-							{% endfor %}
-						</select>
-					</div>
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate = "Topic is required">
-					<span class="label-input100">Presentation Topic</span>
-					<textarea class="input100" name="message" placeholder="Your Presentation topic"></textarea>
+				<div class="wrap-input100 validate-input" data-validate="verification code is required">
+					<span class="label-input100">Verification code</span>
+					<input class="input100" type="number" name="name" placeholder="the verification code we just sent you">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -112,7 +82,7 @@
 <!--===============================================================================================-->
 	<script src="{% static 'reserve/reserve_mainpage/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'reserve/reserve_mainpage/js/reserve_mainpage.js' %}"></script>
+	<script src="{% static 'reserve/reserve_mainpage/js/reserve_verification.js' %}"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

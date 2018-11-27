@@ -12,13 +12,15 @@ def reserve_mainpage(request):
     email = request.GET.get("email")
     date = request.GET.get("service")
     topic = request.GET.get("message")
-    if stdnum == None:
+    if stdnum == None:#reserve_mainpage
         template = loader.get_template("reserve_mainpage.html")
         all_Datetime = Datetime.objects.all()
         context = {'all_Datetime': all_Datetime}
         return HttpResponse(template.render(context, request))
-    #else
-    return HttpResponse("salam")
+    #else #verification_page
+    template = loader.get_template("reserve_verification.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 
 
