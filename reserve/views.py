@@ -33,9 +33,10 @@ def reserve_mainpage(request):
     student = Student(stdnum=stdnum, name=name, email=email, datetime=datetime, topic=topic, is_verified=False,
                       verification_code=verification_code)
     verification_link_str = request.get_host()+'/reserve/verificationlink/?email='+email+'&verificationcode='+str(verification_code)
+    email_text = 'hi \n you made a reservation for a presentation under this email address' + '\n your reservation information are as follows:' + '\n stdnum: ' + stdnum + '\n datetime: ' + datetime.__str__() + '\n topic: ' + topic + '\n'
     send_mail(
         'Reservation Verification Link',
-        'your Reservation verification link is: <a href="'+verification_link_str+'">Click</a>',
+        email_text + 'your Reservation verification link is: <a href="'+verification_link_str+'">Click</a>',
         'community@class.ir',
         [student.email],
         fail_silently=True,
