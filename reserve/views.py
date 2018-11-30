@@ -59,19 +59,19 @@ def verification_link(request):
             _student.save()
             result = 'SUCCESSFUL'
     # create the list
-    #book = openpyxl.Workbook()
-    #sheet = book.active
-    #cnt = 1
-    #for st in Student.objects.all():
-    #    if st.is_verified:
-    #        sheet['A' + str(cnt)] = st.email
-    #        sheet['B' + str(cnt)] = st.topic
-    #        sheet['C' + str(cnt)] = st.datetime.__str__()
-    #        cnt += 1
-    #os.chdir(os.path.join(BASE_DIR, "media"), )
-    #if os.path.exists('list.xlsx'):
-    #    os.remove('list.xlsx')
-    #book.save('list.xlsx')
+    book = openpyxl.Workbook()
+    sheet = book.active
+    cnt = 1
+    for st in Student.objects.all():
+        if st.is_verified:
+            sheet['A' + str(cnt)] = st.email
+            sheet['B' + str(cnt)] = st.topic
+            sheet['C' + str(cnt)] = st.datetime.__str__()
+            cnt += 1
+    os.chdir(os.path.join(BASE_DIR, "media"), )
+    if os.path.exists('list.xlsx'):
+        os.remove('list.xlsx')
+    book.save('list.xlsx')
 
 
     template = loader.get_template("reserve_is_verified.html")
