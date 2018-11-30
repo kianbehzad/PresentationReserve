@@ -8,17 +8,31 @@ import openpyxl
 
 # Create your views here.
 
+def sort_datatime(elem):
+    return elem.datetime.year*365 + elem.datetime.month*30 + elem.datetime.day
+
 def list(request):
     # create the list
-    book = openpyxl.Workbook()
-    sheet = book.active
-    cnt = 1
+    student_list = []
     for st in Student.objects.all():
         if st.is_verified:
-            sheet['A' + str(cnt)] = st.email
-            sheet['B' + str(cnt)] = st.topic
-            sheet['C' + str(cnt)] = st.datetime.__str__()
-            cnt += 1
+            student_list.append(st)
+    student_list.sort(key=sort_datatime)
+    book = openpyxl.Workbook()
+    sheet = book.active
+    cnt = 2
+    sheet['A1'] = 'EMAIL'
+    sheet['B1'] = 'STUDENT NUMBER'
+    sheet['C1'] = 'NAME'
+    sheet['D1'] = 'TOPIC'
+    sheet['E1'] = 'DATE TIME'
+    for st in student_list:
+        sheet['A' + str(cnt)] = st.email
+        sheet['B' + str(cnt)] = st.stdnum
+        sheet['C' + str(cnt)] = st.name
+        sheet['D' + str(cnt)] = st.topic
+        sheet['E' + str(cnt)] = st.datetime.__str__()
+        cnt += 1
     os.chdir(os.path.join(BASE_DIR, "media"))
     if os.path.exists('list.xlsx'):
         os.remove('list.xlsx')
