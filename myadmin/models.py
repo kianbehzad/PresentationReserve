@@ -6,6 +6,7 @@ class Datetime(models.Model):
     year = models.IntegerField()
     month = models.IntegerField()
     day = models.IntegerField()
+    limit_count = models.IntegerField(default=0)
     number_of_stars = models.IntegerField(default=0)
 
     def __str__(self):
