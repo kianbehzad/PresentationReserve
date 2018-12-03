@@ -21,17 +21,23 @@ def list(request):
     book = openpyxl.Workbook()
     sheet = book.active
     cnt = 2
-    sheet['A1'] = 'EMAIL'
-    sheet['B1'] = 'STUDENT NUMBER'
-    sheet['C1'] = 'NAME'
-    sheet['D1'] = 'TOPIC'
-    sheet['E1'] = 'DATE TIME'
-    for st in student_list:
-        sheet['A' + str(cnt)] = st.email
-        sheet['B' + str(cnt)] = st.stdnum
-        sheet['C' + str(cnt)] = st.name
-        sheet['D' + str(cnt)] = st.topic
-        sheet['E' + str(cnt)] = st.datetime.__str__()
+    sheet['A1'] = 'NUM'
+    sheet['B1'] = 'EMAIL'
+    sheet['C1'] = 'STUDENT NUMBER'
+    sheet['D1'] = 'NAME'
+    sheet['E1'] = 'TOPIC'
+    sheet['F1'] = 'DATE TIME'
+    num = 1
+    for i in range(len(student_list)):
+        if i >= 1 and student_list[i].datetime != student_list[i-1].datetime:
+            num = 1
+        sheet['A' + str(cnt)] = num
+        sheet['B' + str(cnt)] = student_list[i].email
+        sheet['C' + str(cnt)] = student_list[i].stdnum
+        sheet['D' + str(cnt)] = student_list[i].name
+        sheet['E' + str(cnt)] = student_list[i].topic
+        sheet['F' + str(cnt)] = student_list[i].datetime.__str__()
+        num += 1
         cnt += 1
     os.chdir(os.path.join(BASE_DIR, "media"))
     if os.path.exists('list.xlsx'):
